@@ -36,8 +36,17 @@ def analyze_receipt():
                 "error": "Parsing failed",
                 "details": parsed_data.get("error")
             }), 500
+
+        required_fields = ["Vendor_Name", "Total_Amount", "Receipt_Date"]
+        empty_fields = [f for f in required_fields if not parsed_data.get(f)]
+
+        if not parsed_data or all(value in [None, "", 0, [], {}] for value in parsed_data.values()) or empty_fields:
+            return jsonify({
+                "error": "No valid receipt details detected in the image.",
+                "details": f"Missing or empty fields: {', '.join(empty_fields) if empty_fields else 'No valid data found'}"
+            }), 400
         print("Parsed Data:", parsed_data)
-        
+
         status_code, zoho_response = zoho_service.create_record(parsed_data)
         if status_code != 200 or "error" in zoho_response:
             return jsonify({
@@ -47,8 +56,9 @@ def analyze_receipt():
 
         return jsonify({
             "message": "Receipt processed successfully",
-            "download_link": image_url,
-            "parsed_data": parsed_data
+            # "download_link": image_url,
+            # "parsed_data": parsed_data,
+            "zoho_response": zoho_response
         }), 200
 
     except Exception as e:

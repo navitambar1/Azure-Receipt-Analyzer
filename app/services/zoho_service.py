@@ -1,4 +1,4 @@
-import requests, json
+import requests
 from app.utils.config import get_env
 
 OWNER_NAME = get_env("ZOHO_OWNER_NAME")
@@ -32,7 +32,6 @@ def create_record(receipt_data):
     print("Zoho Creator Response:", res.status_code, "==========",res.text)
     if res.status_code == 200:
         return res.status_code, res.text
-        
     else:
         print("Failed to create record in Zoho Creator", res.text,"-------------", res.status_code)
         return res.status_code, res.text
