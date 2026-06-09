@@ -1,23 +1,58 @@
 Zoho Receipt Analyzer
 
-A smart receipt processing solution integrated with Zoho that enables users to capture receipt information using voice commands. The application leverages Microsoft Azure Speech-to-Text (STT) services to convert spoken input into text, allowing hands-free data entry and improved user experience. The extracted information is then analyzed, structured, and processed within the Zoho ecosystem to streamline expense tracking, receipt management, and record keeping. The system reduces manual data entry, improves accuracy, and accelerates receipt processing workflows through AI-powered speech recognition and automation.
+A voice-enabled receipt processing application that integrates with Zoho and uses Microsoft Azure Speech-to-Text (STT) to convert spoken input into structured receipt data. The solution helps reduce manual data entry and streamlines receipt management workflows.
 
-Key Features:
-
-Voice-based receipt data capture
+Features
+Voice-based receipt information capture
 Azure Speech-to-Text integration
-Automated receipt information extraction
+Automated receipt data extraction
 Zoho integration for data management
-Reduced manual entry and processing time
-Improved accuracy through AI-powered transcription
-Streamlined expense and receipt tracking workflow
-
-Technology Stack:
-
+Faster and more accurate data entry
+REST API-based architecture
+How It Works
+User provides receipt details through voice input.
+Azure Speech-to-Text converts speech into text.
+The application processes and structures the extracted data.
+Receipt information is validated and sent to Zoho.
+Data becomes available for reporting and management within Zoho.
+Technology Stack
 Python
-Zoho APIs
 Microsoft Azure Speech Services (STT)
+Zoho APIs
 REST APIs
-JSON-based data processing
+JSON
+Prerequisites
+Python 3.8+
+Azure Speech Services account
+Zoho API credentials
+Required environment variables configured
+Installation
+git clone <repository-url>
+cd zoho-receipt-analyzer
+pip install -r requirements.txt
+Configuration
 
-This project demonstrates the integration of cloud-based AI speech recognition with business process automation to create an efficient and user-friendly receipt management solution.
+Set the required environment variables:
+
+AZURE_SPEECH_KEY=your_azure_speech_key
+AZURE_SPEECH_REGION=your_region
+
+ZOHO_CLIENT_ID=your_client_id
+ZOHO_CLIENT_SECRET=your_client_secret
+ZOHO_REFRESH_TOKEN=your_refresh_token
+Run the Application
+python app.py
+Use Cases
+Expense management
+Receipt digitization
+Voice-driven data entry
+Business process automation
+Zoho workflow integration
+Future Enhancements
+OCR support for receipt images
+Multi-language speech recognition
+Advanced AI-based receipt categorization
+Analytics and reporting dashboard
+License
+
+This project is intended for internal/business use and can be customized based on organizational requirements.
